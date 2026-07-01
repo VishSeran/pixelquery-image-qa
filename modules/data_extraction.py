@@ -57,3 +57,4 @@ def encode_image(image_paths:Optional[list[str]] = None,
         logger.error(f"Multi-image encoding failed: : {e}")
         raise
         
+ 
