@@ -10,10 +10,10 @@ No fine-tuning, no fuss — just point it at pixels and start asking.
 
 
 ### Local Image with Q&A Generation
-![local image generation]
+![local image generation](localimage.png)
 
 ### URL of Image with Q&A Generation
-![url of image generation]
+![url of image generation](url.png)
 
 ---
 
