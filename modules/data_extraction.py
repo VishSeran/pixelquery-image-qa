@@ -1,4 +1,4 @@
-from typing import Optional,
+from typing import Optional
 from modules.logger import get_logger
 import requests
 import base64

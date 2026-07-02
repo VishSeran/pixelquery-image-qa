@@ -4,15 +4,19 @@ import torch
 from modules.logger import get_logger
 
 logger = get_logger("model-config")
+
 VISION_MODEL = 'HuggingFaceTB/SmolVLM2-2.2B-Instruct'
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 vision_model = AutoModelForImageTextToText.from_pretrained(
     VISION_MODEL,
-    torch_dtype = torch.bfloat16
+    dtype = torch.bfloat16
 ).to(device)
 
 vision_processor = AutoProcessor.from_pretrained(VISION_MODEL)
+
+vision_processor.tokenizer.pad_token_id = None
+
 
 
 def get_response_from_model(image, user_query):
@@ -62,8 +66,10 @@ def get_response_from_model(image, user_query):
             max_new_tokens=200
         )
         
-        if not generated_ids:
-            logger.info("Response is fetched")
+        if generated_ids is None:
+            logger.info("Response fetch failed")
+            
+        generated_ids = generated_ids[:, inputs["input_ids"].shape[1]:]
             
         generated_text = vision_processor.batch_decode(
             generated_ids,
