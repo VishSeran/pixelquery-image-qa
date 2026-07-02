@@ -120,10 +120,4 @@ Both the extraction and inference layers validate their inputs up front and log 
 
 ---
 
-## 📄 License
-
-Add your license of choice here (MIT is a solid default for projects like this).
-
----
-
 *Built for anyone who'd rather ask an image a question than stare at it in silence.*
